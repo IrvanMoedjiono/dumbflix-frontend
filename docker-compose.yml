@@ -1,0 +1,22 @@
+version: '3.8'
+services: 
+ Frontend: 
+   container_name: fro
+   build: .
+   image: irvanmoedjiono/fe:1
+   stdin_open: true 
+   ports: 
+     - 3000:3000
+
+ Backend:
+   container_name: bac
+   image: irvanmoedjiono/be:1
+   stdin_open: true
+   ports:
+     - 5000:5000
+
+ Nginx:
+   container_name: nginx
+   image: nginx:re
+   ports:
+     - 80:80
