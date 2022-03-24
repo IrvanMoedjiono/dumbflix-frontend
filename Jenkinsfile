@@ -1,5 +1,5 @@
 def secret = 'credential'
-def server = 'server'
+def server = '10.224.143.197'
 def dir = 'dumbflix-frontend'
 def branch = 'master'
 
