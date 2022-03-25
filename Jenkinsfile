@@ -6,7 +6,7 @@ def branch = 'master'
 pipeline{
 	agent any
 	stages{
-		stage ('proses ke 1 bro'){
+		stage ('proses ke 1'){
 			steps{
 				sshagent([secret]) {
 					sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
@@ -19,7 +19,7 @@ pipeline{
 				}
 			}
 		}
-	stage ('proses ke 2 bro'){
+	stage ('proses ke 2 '){
                         steps{
                                 sshagent([secret]) {
                                         sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
@@ -30,7 +30,7 @@ pipeline{
                                 }
                         }
                 }
-	stage ('dods sss'){
+	stage ('3'){
                         steps{
                                 sshagent([secret]) {
                                         sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
