@@ -6,7 +6,7 @@ def branch = 'master'
 pipeline{
 	agent any
 	stages{
-		stage ('proses ke 1'){
+		stage ('Delete container and images & git pull'){
 			steps{
 				sshagent([secret]) {
 					sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
@@ -19,18 +19,20 @@ pipeline{
 				}
 			}
 		}
-	stage ('proses ke 2 '){
+	stage ('Build Images'){
                         steps{
                                 sshagent([secret]) {
                                         sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
-                                        cd ${dir}
+                                        cd ${dir}/nginx
+					docker build -t nginx:re .
+					cd ..
                                         docker-compose build
                                         exit
                                         EOF"""
                                 }
                         }
                 }
-	stage ('3'){
+	stage ('Deploy Container'){
                         steps{
                                 sshagent([secret]) {
                                         sh """ssh -o StrictHostKeyChecking=no ${server} << EOF
